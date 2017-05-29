@@ -1,0 +1,49 @@
+{% extends 'trip/base.html' %}
+
+{% block content %}
+  <div class="single_trip row">
+    <div class="places_list col-5">
+      <div class="places_header">
+        <h2>{{ trip.title }}</h2>
+        <div class="trip_text">
+          <p>{{ trip.text|linebreaksbr }}</p>
+        </div>
+      </div>
+      {% for place in trip.places.all %}
+        <div class="place">
+          <div class="place_title">
+            {{ place.title }}
+          </div>
+          <div class="place_text">
+            {{ place.text }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="col-7">
+      <div id="map"></div>
+    </div>
+    <script>
+      function initMap() {
+        var jsonObject = JSON.parse({{ json_string|safe }});
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 54.35, lng: 18.65},
+          zoom: 10
+        });
+        for (var i = 0; i < jsonObject.length; i++) {
+          if (i === 0) {
+            map.setCenter({lat: parseFloat(jsonObject[i].fields.lat), lng: parseFloat(jsonObject[i].fields.lng)});
+          }
+          new google.maps.Marker({
+            map: map,
+            position: {lat: parseFloat(jsonObject[i].fields.lat), lng: parseFloat(jsonObject[i].fields.lng)},
+            label: jsonObject[i].fields.title,
+          });
+        }
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbSoywQrdycLN2oZU_y6_-m0vsWkRamFA&callback=initMap"
+    async defer></script>
+  </div>
+{% endblock %}

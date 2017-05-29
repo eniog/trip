@@ -1,0 +1,64 @@
+body {
+    padding: 50px;
+}
+
+header {
+    padding: 1rem;
+    border: 1px solid #5b80b2;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+h1 a {
+    color: #003366;
+}
+
+h2 a{
+        color: #CC3434;
+    }
+
+.trip {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #CC3434;
+    border-radius: 0.5rem;
+}
+
+.trip_header {
+
+}
+
+.trip_text {
+    color: #cc2222;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+.places_list {
+    color: #CC3434;
+}
+
+.place {
+    padding: 0.5rem;
+    border: 1px solid #5b80b2;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    color: #5b80b2;
+}
+
+.place_title {
+    font-size: 1.5rem;
+    color: #003366;
+}
+
+.place_text {
+    font-size: 1rem;
+    font-size: 16px;
+}
+
+.places_header {
+    padding: 1rem;
+}

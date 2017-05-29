@@ -1,0 +1,14 @@
+{% extends 'trip/base.html' %}
+
+{% block content %}
+{% for trip in trips %}
+<div class="trip">
+  <div class="trip_header">
+    <h2><a href="{% url 'trip_detail' pk=trip.pk %}">{{ trip.title }}</a></h2>
+  </div>
+  <div class="trip_text">
+    <p>{{ trip.text|linebreaksbr }}</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}
